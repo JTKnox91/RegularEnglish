@@ -19,9 +19,9 @@ var RegEngMethods = {
     console.log("Attempting to make RegExp with:", this.self + ")$");
     return new RegExp(this.self + ")$");
   },
-  thisString: function(str) {
-    //TODO: escape special charcters
-    return RegEng(this.self + "(" + str + ")");
+  theString: function(str) {
+    str = this.escapeStr(str);
+    return RegEng(this.self + str);
   },
   aLetterOrNumber: function() {
     return RegEng(this.self + "\\w");
@@ -35,8 +35,17 @@ var RegEngMethods = {
   either: function(strArr) {
     var optionsStr = "(";
     for (var i = 0; i < strArr.length; i ++) {
-      optionsStr += strArr[i] + "|";
+      optionsStr += this.escapeStr(strArr[i]) + "|";
     }
+    //this is a hack, find a more elegant solution
+    optionsStr += ")";
+    optionsStr.replace("|)", ")");
+    return RegEng(this.self + optionsStr);
+  },
+  escapeStr: function(str) {
+    str = str.replace(".", "\\.");
+    //TODO: Escape more special characters
+    return str;
   },
   ofOneOrMore: function() {
     return RegEng(this.self + "+");
@@ -51,8 +60,22 @@ var RegEngMethods = {
 
 var test = RegEng().fromTheStart().aLetterOrNumber().ofZeroOrOne().then().aNumber().ofOneOrMore().toTheEnd();
 
-console.log(test.toString());
-console.log(test.test("a1")); //true
-console.log(test.test("11")); //true
-console.log(test.test("aa")); //false
-console.log(test.test("aa1")); //false
+var test2 = 
+  RegEng()
+    .aLetterOrNumber().ofOneOrMore().then()
+    .theString("@").then()
+    .aLetterOrNumber().ofOneOrMore().then()
+    .theString(".").then()
+    .either(["com","net","org"])
+  .end();
+
+console.log(test.toString()); // /^(\w?)(\d+)$/
+console.log(test.test("a1")); // true
+console.log(test.test("11")); // true
+console.log(test.test("aa")); // false
+console.log(test.test("aa1")); // false
+
+console.log(test2.toString());
+console.log(test2.test("unodrummer@yahoo.com")); // true
+console.log(test2.test("not an email")); // false
+console.log(test2.test("blahblah@.com")); //false
