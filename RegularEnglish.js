@@ -53,14 +53,14 @@ var RegEngMethods = {
   ofZeroOrOne: function() {
     return RegEng(this.self + "?");
   },
-  ofAny: function() {
+  ofAnyAmount: function() {
     return RegEng(this.self + "*");
   }
 };
 
 var test = RegEng().fromTheStart().aLetterOrNumber().ofZeroOrOne().then().aNumber().ofOneOrMore().toTheEnd();
 
-var test2 = 
+var emailTest = 
   RegEng()
     .aLetterOrNumber().ofOneOrMore().then()
     .theString("@").then()
@@ -75,7 +75,9 @@ console.log(test.test("11")); // true
 console.log(test.test("aa")); // false
 console.log(test.test("aa1")); // false
 
-console.log(test2.toString());
-console.log(test2.test("unodrummer@yahoo.com")); // true
-console.log(test2.test("not an email")); // false
-console.log(test2.test("blahblah@.com")); //false
+console.log(emailTest.toString()); // /(\w+)(@)(\w+)(\.)((com|net|org|))/
+console.log(emailTest.test("unodrummer@yahoo.org")); // true
+console.log(emailTest.test("not an email")); // false
+console.log(emailTest.test("nodomain@.com")); // false
+console.log(emailTest.test("something@domain.net")); // true 
+console.log(emailTest.exec("something@domain.net")[1]); // something
