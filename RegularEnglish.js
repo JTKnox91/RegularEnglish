@@ -108,7 +108,17 @@ var RegEngMethods = {
     }
     this.current += "[" + consonants + "]";
     return this;
-  }
+  },
+
+  aLetterOrNumber: function () {
+    this.current += "\\w";
+    return this;
+  },
+
+  whiteSpace: function () {
+    this.current += "\\s";
+    return this;
+  },
 
 };
 
