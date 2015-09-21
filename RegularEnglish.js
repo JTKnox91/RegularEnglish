@@ -92,6 +92,22 @@ var RegEngMethods = {
     }
     this.current += "[" + vowels + "]";
     return this;
+  },
+
+  aConsonant: function () {
+    var flags = getFlags.call(arguments);
+    var consonants = !flags.Y ? "bcdfghjklmnpqrstvwxyz" : "bcdfghjklmnpqrstvwxz";
+    if (flags.U) {
+      consonants = consonants.toUpperCase();
+    }
+    else if (flags.L) {
+      void 0;
+    }
+    else {
+      consonants += consonants.toUpperCase();
+    }
+    this.current += "[" + consonants + "]";
+    return this;
   }
 
 };
