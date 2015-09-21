@@ -67,7 +67,7 @@ RegExp equivalent of {n,m}.
 RegExp equivalent of "+".
 
 ######.ofZeroOrMore()
-RegExp equivalent of ".".
+RegExp equivalent of "*".
 
 ######.optional()
 Previous selection is optional (zero of 1). RegExp equivalent of "?".
