@@ -166,8 +166,23 @@ var RegEngMethods = {
     return this;
   },
 
-  anyIn: function () {
+  anyIn: function (string) {
+    string = this.escape(string);
 
+    //dashed in the first or last part of the brackets should not be escaped
+    if (string.length <= 2) {
+      this.current = "[" + string + "]";
+    }
+    else {
+      this.current =
+        "[" +
+          string[0] +
+          string.slice(1, string.length).replace("-", "\\-") +
+          string[string.length] +
+        "]";
+    }
+    
+    return this;
   },
 
   fromStart: function () {
