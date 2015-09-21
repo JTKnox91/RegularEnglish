@@ -76,6 +76,22 @@ var RegEngMethods = {
   aNumber: function () {
     this.current += "\\d";
     return this;
+  },
+
+  aVowel: function () {
+    var flags = getFlags.call(arguments);
+    var vowels = flags.Y ? "aeiouy" : "aeiou";
+    if (flags.U) {
+      vowels = vowels.toUpperCase();
+    }
+    else if (flags.L) {
+      void 0;
+    }
+    else {
+      vowels += vowels.toUpperCase();
+    }
+    this.current += "[" + vowels + "]";
+    return this;
   }
 
 };
