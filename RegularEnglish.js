@@ -70,7 +70,14 @@ var RegEngMethods = {
     else {
       this.current += "[A-Za-z]";
     }
+    return this;
+  },
+
+  aNumber: function () {
+    this.current += "\\d";
+    return this;
   }
+
 };
 
 /*HELPERS*/
