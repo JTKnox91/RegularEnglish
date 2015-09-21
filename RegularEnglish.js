@@ -131,28 +131,39 @@ var RegEngMethods = {
     return this;
   },
 
-  ofRange: function () {
-
+  ofRange: function (n, m) {
+    this.current += "{" + n + "," + m + "}";
+    return this;
   },
 
   ofOneOrMore: function () {
-
+    this.current += "+";
+    return this;
   },
 
   ofZeroOrMore: function () {
-
+    this.current += "*";
+    return this;
   },
 
+  /*TODO, figure out how to quantiy entire capture groups*/
   optional: function () {
 
   },
 
   then: function () {
-
+    this.groups.push(this.current);
+    this.current = "";
+    return this;
   },
 
-  either: function () {
-
+  either: function (strings) {
+    this.current += "(" + 
+      strings
+        .map(this.escape)
+        .join("|") +
+      ")";
+    return this;
   },
 
   anyIn: function () {
@@ -160,12 +171,13 @@ var RegEngMethods = {
   },
 
   fromStart: function () {
-
+    this.fromStart = true;
+    return this;
   },
 
   toEnd: function () {
-
-  },
+    this.toEnd = true;
+  }
 
 };
 
