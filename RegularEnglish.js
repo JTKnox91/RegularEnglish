@@ -120,6 +120,11 @@ var RegEngMethods = {
     return this;
   },
 
+  anything: function () {
+    this.current += ".";
+    return this;
+  }
+
 };
 
 /*HELPERS*/
