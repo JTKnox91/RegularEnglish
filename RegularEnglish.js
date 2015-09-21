@@ -54,4 +54,9 @@ var RegEngMethods = {
       .join("");
   },
 
+  theString: function (string) {
+    this.current += this.escape(string);
+    return this;
+  },
+
 };
