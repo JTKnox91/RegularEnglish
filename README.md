@@ -87,11 +87,11 @@ Match any of the characters in the string. RegExp of [abc]. Special characters w
 
 ######.fromStart()
 Must match from start of string. RegExp equivalent of "^".
-This method must be the first thing chained to the RegEng() instance.
+If used, this method should be the first thing chained to the RegEng() instance.
 
 ######.toEnd()
 Must match to the end of string. RegExp equivalent of "$".
-This method must be the last thing chained before .make()
+If used, this method should be the last thing chained before .make()
 
 ####Premade Constructs
 
