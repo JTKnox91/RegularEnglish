@@ -60,15 +60,22 @@ var RegEngMethods = {
   },
 
   aLetter: function () {
-    var flags = Array.prototype.slice.call(arguments);
-
+    var flags = getFlags.call(arguments);
+    if (flags.U) {
+      this.current += "[A-Z]";
+    }
+    else if (flags.L) {
+      this.current += "[a-z]";
+    }
+    else {
+      this.current += "[A-Za-z]";
+    }
   }
-
 };
 
 /*HELPERS*/
 var getFlags = function (offset) {
-  var args = Array.prototype.slice.call(this, offset);
+  var args = Array.prototype.slice.call(this, offset || 0);
   var flags = {};
   for (var i = 0; i < args.length; i++) {
     flags[args[i]] = true;
