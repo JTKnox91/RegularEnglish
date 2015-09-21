@@ -27,7 +27,7 @@ var RegEngMethods = {
   escape: function (string) {
     /*FULL LIST OF SPECIAL CHARACTERS FOR REFERENCE:
       \ ^ $ {} [] () . * + ? <>
-      (hyphen will be handled circumstanctially')
+      (hyphen will be handled circumstanctially)
     */
     var escapees = {
       "\\": "\\\\",
@@ -46,6 +46,12 @@ var RegEngMethods = {
       "<" : "\\<", 
       ">" : "\\>" 
     };
+    return string
+      .split("")
+      .map(function (char) {
+        return escapees[char] || char;
+      })
+      .join("");
   },
 
 };
