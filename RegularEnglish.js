@@ -192,8 +192,12 @@ var RegEngMethods = {
 
   toEnd: function () {
     this.toEnd = true;
-  }
+  },
 
+  theRegExp: function (doNotEscape) {
+    this.current += doNotEscape;
+    return this;
+  }
 };
 
 /*HELPERS*/

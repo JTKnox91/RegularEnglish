@@ -93,6 +93,9 @@ If used, this method should be the first thing chained to the RegEng() instance.
 Must match to the end of string. RegExp equivalent of "$".
 If used, this method should be the last thing chained before .make()
 
+######.theRegExp(doNotEspace)
+If this library is not comprehensive, you can insert your own regular expression. The input string will **not** be escaped.
+
 ####Premade Constructs
 
 #####Usage:
