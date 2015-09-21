@@ -120,10 +120,52 @@ var RegEngMethods = {
     return this;
   },
 
+  /* TODO:
+  not: function () {
+
+  },
+  */
+
   anything: function () {
     this.current += ".";
     return this;
-  }
+  },
+
+  ofRange: function () {
+
+  },
+
+  ofOneOrMore: function () {
+
+  },
+
+  ofZeroOrMore: function () {
+
+  },
+
+  optional: function () {
+
+  },
+
+  then: function () {
+
+  },
+
+  either: function () {
+
+  },
+
+  anyIn: function () {
+
+  },
+
+  fromStart: function () {
+
+  },
+
+  toEnd: function () {
+
+  },
 
 };
 
