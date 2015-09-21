@@ -181,7 +181,7 @@ var RegEngMethods = {
           string[string.length] +
         "]";
     }
-    
+
     return this;
   },
 
@@ -197,6 +197,9 @@ var RegEngMethods = {
 };
 
 /*HELPERS*/
+
+//Do not invoke this directly
+//Instead use .call(arguments, offset)
 var getFlags = function (offset) {
   var args = Array.prototype.slice.call(this, offset || 0);
   var flags = {};
