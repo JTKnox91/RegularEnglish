@@ -100,7 +100,7 @@ If this library is not comprehensive, you can insert your own regular expression
 
 #####Usage:
 
-RegEng().premade().**premadeName()**.make()
+RegEng().premade().*premadeName()*.make()
 
 ######.email()
 
