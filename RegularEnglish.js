@@ -248,7 +248,7 @@ var RegEngMethods = {
         var special = options.special || 1;
         var min = options.min || 8;
         var max = options.max || 32;
-        return RengEng()
+        return RegEng()
           .contains("aUpperCaseLetter", "ofAtLeast", upper)
           .contains("aLowerCaseLetter", "ofAtLeast", lower)
           .contains("aNumber", "ofAtLeast", number)

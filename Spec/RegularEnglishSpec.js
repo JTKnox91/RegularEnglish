@@ -186,14 +186,23 @@ describe("Quantifiers", function() {
     it("should match when at least one is present", function () {
       expect(testExp.test("1")).to.equal(false);
       expect(testExp.test("a1")).to.equal(true);
-      expect(testExp.test("AAAAAAA1")).to.equal(true);
+      expect(testExp.test("1AAAAAAA")).to.equal(true);
     });
     it("should be greedy", function () {
       expect(("AAA").match(testExp)[0]).to.equal("AAA");
     });
   });
+
   describe("ofAnyAmount", function () {
-    it("should ");
+    var testExp = RegEng().aLetter().ofAnyAmount().make();
+    it("should match for any amount", function () {
+      expect(testExp.test("1")).to.equal(true);
+      expect(testExp.test("a1")).to.equal(true);
+      expect(testExp.test("1AAAAAAA")).to.equal(true);
+    });
+    it("should be greedy", function () {
+      expect(("AAA").match(testExp)[0]).to.equal("AAA");
+    });
   });
   describe("ofAtLeast", function () {
     it("should ");
