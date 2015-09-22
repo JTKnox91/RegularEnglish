@@ -39,6 +39,15 @@ describe("Selectors", function() {
     });
   });
 
+  describe("aNumber", function () {
+    it("should match a number", function () {
+      expect(RegEng().aNumber().make().test("1")).to.equal(true);
+    });
+    it("should not match not a number", function ()  {
+      expect(RegEng().aNumber().make().test("a")).to.equal(false);
+    });
+  })
+
 });
 
 describe("Quantifiers", function() {
