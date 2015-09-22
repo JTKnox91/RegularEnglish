@@ -1,93 +1,18 @@
-var specs = [
-{ assertion: "Should create global RegEng constructor",
-  actual: RegEng,
-  relation: "to be a",
-  expect: "function",
-  test: function() {
-    return typeof this.actual === this.expect;
-  },
-},
-{ assertion: "Should be able to make a RegularExpression",
-  actual: RegEng().aLetter().make(),
-  relation: "to be an instance of",
-  expect: RegExp,
-  test: function() {
-    return this.actual instanceof RegExp;
-  },
-},
-{ assertion: "Should escape special characters",
-  actual: RegEng().escape("\\^${}[]().*+?<>"),
-  relation: "to equal",
-  expect: "\\\\\\^\\$\\{\\}\\[\\]\\(\\)\\.\\*\\+\\?\\<\\>",
-  test: function() {
-    return this.actual === this.expect;
-  },
-},
-{ assertion: "Should ",
-  actual: ,
-  relation: ,
-  expect: ,
-  test: function() {
-    return this.actual === this.expect;
-  },
-},
-{ assertion: "Should ",
-  actual: ,
-  relation: ,
-  expect: ,
-  test: function() {
-    return this.actual === this.expect;
-  },
-},
-{ assertion: "Should ",
-  actual: ,
-  relation: ,
-  expect: ,
-  test: function() {
-    return this.actual === this.expect;
-  },
-},
-{ assertion: "Should ",
-  actual: ,
-  relation: ,
-  expect: ,
-  test: function() {
-    return this.actual === this.expect;
-  },
-},
-{ assertion: "Should ",
-  actual: ,
-  relation: ,
-  expect: ,
-  test: function() {
-    return this.actual === this.expect;
-  },
-},
-{ assertion: "Should ",
-  actual: ,
-  relation: ,
-  expect: ,
-  test: function() {
-    return this.actual === this.expect;
-  },
-},
-{ assertion: "Should ",
-  actual: ,
-  relation: ,
-  expect: ,
-  test: function() {
-    return this.actual === this.expect;
-  },
-},
-];
+var expect = chai.expect;
 
-for (var i = 0; i < specs.length; i++) {
-  var spec = specs[i];
-  if (!spec.test()) {
-    console.log(
-      spec.assertion, "Falied\nExpected",
-      spec.actual, spec.relation, spec.expect
-    );
-  }
-}
-console.log("Tests Complete");
+describe("RegEng", function() {
+  it("should be a constructor", function() {
+    expect(RegEng).to.be.a("function");
+  });
+
+  it("should make a regular expression object", function() {
+    var testExp = RegEng().aLetter().make();
+    expect(testExp instanceof RegExp).to.be.ok;
+  });
+});
+
+describe("escape", function() {
+  it("should escape special characters", function() {
+    expect(RegEng().escape("\\^${}[]().*+?<>")).to.equal("\\\\\\^\\$\\{\\}\\[\\]\\(\\)\\.\\*\\+\\?\\<\\>");
+  });
+});

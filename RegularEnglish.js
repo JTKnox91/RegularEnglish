@@ -12,7 +12,7 @@ var RegEngMethods = {
     //TODO: include error handling for invalid expressions
 
     //finish last group object
-    this.groups[this.groups.length].text = this.current;
+    this.groups[this.groups.length -1].text = this.current;
 
     var regExpStr = 
       this.fromStart ? "^" : "" +
