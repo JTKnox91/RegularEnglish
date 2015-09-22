@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>RegularEnglishSpecRunner</title>
-	<script src="../RegularEnglish.js"></script>
-	<script src="RegularEnglishSpec.js"></script>
+  <meta charset="utf-8">
+  <title>Regular English Tests</title>
+  <link rel="stylesheet"href="lib/mocha.css">
 </head>
 <body>
-	<p>View Tests in the console</p>
+  <div id="mocha"><p><a href="https://github.com/JTKnox91/RegularEnglish">Regular English</a> SpecRunner</p></div>
+  <div id="messages"></div>
+  <div id="fixtures"></div>
+  <script src="lib/mocha.js"></script>
+  <script src="lib/chai.js"></script>
+  <script src="../RegularEnglish.js"></script>
+  <script>mocha.setup('bdd');</script>
+  <script src="RegularEnglishSpec.js"></script>
+  <script>mocha.run();</script>
 </body>
 </html>
