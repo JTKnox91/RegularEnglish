@@ -102,6 +102,18 @@ If this library is not comprehensive, you can insert your own regular expression
 
 RegEng().premade().*premadeName()*.make()
 
+######.password([options]);
+
+Produces a password validator. Options object defaults to the following:
+    {
+    	upper: 1 //At least one uppercase character
+    	lower: 1 //At least one lowercase character
+    	number: 1 //At least one number
+    	special: 1 //At least one special character
+    	min: 8 //minimum length of 8 characters
+    	max: 32 //maximum length of 32 characters
+	}
+
 ######.email()
 
 ######.streetAdress()

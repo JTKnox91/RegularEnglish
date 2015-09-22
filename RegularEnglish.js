@@ -110,6 +110,16 @@ var RegEngMethods = {
     return this;
   },
 
+  aUpperCaseLetter: function () {
+    this.current += "[A-Z]";
+    return this;
+  },
+
+  aLowerCaseLetter: function () {
+    this.current += "[a-z]";
+    return this;
+  },
+
   aLetterOrNumber: function () {
     this.current += "\\w";
     return this;
@@ -141,8 +151,18 @@ var RegEngMethods = {
     return this;
   },
 
-  ofZeroOrMore: function () {
+  ofAnyAmount: function () {
     this.current += "*";
+    return this;
+  },
+
+  ofAtLeast: function (n) {
+    this.current += "{" + n + ",}";
+    return this;
+  },
+
+  ofExactly: function (n) {
+    this.current += "{" + n + "}";
     return this;
   },
 
@@ -152,6 +172,9 @@ var RegEngMethods = {
   },
 
   then: function () {
+    if (this.containers.length) {
+      this.current = containers.join(")") + ")" + this.current;
+    }
     this.groups.push(this.current);
     this.current = "";
     return this;
@@ -192,11 +215,64 @@ var RegEngMethods = {
 
   toEnd: function () {
     this.toEnd = true;
+    return this;
+  },
+
+  contains: function () {
+    var args = Array.prototype.slice.call(arguments);
+    var container = "(?=.*";
+    var i = 0;
+    
+    while (i < args.length)
+      if (typeof args[i] === "function") {
+        var f = i;
+        var subArgs = [];
+        i++;
+        while (typeof args[i] !== "function") {
+          subArgs.push(args[i]);
+          i++;
+        }
+        this.current.push(args[f].apply(RegEng(), subArgs).current);
+      }
+      this.current += container;
+
+    return this;
   },
 
   theRegExp: function (doNotEscape) {
     this.current += doNotEscape;
     return this;
+  },
+
+  preMade: function () {
+    return {
+      password: function (options) {
+        var upper = options.upper || 1;
+        var lower = options.lower || 1;
+        var number = options.number || 1;
+        var special = options.special || 1;
+        var min = options.min || 8;
+        var max = options.max || 32;
+        return RengEng()
+          .contains(aUpperCaseLetter, ofAtLeast, upper)
+          .contains(aLowerCaseLetter, ofAtLeast, lower)
+          .contains(aNumber, ofAtLeast, number)
+          .contains(anyIn, "!@#$%^&*-?", ofAtLeast, special)
+          .anything().ofRange(min, max)
+          .make();
+
+      },
+
+      email: function () {
+
+      },
+      streetAdress: function () {
+
+      },
+      validURL: function () {
+
+      },
+    };
   }
 };
 
@@ -211,4 +287,4 @@ var getFlags = function (offset) {
     flags[args[i]] = true;
   }
   return flags;
-};   
+};  
