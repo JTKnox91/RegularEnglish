@@ -20,7 +20,7 @@ var RegEngMethods = {
         return "(" + group.text + ")" + group.optional ? "?" : "";
       }) +
       this.toEnd ? "$" : "";
-      
+
     return new RegExp(regExpStr);
   },
 
@@ -130,12 +130,6 @@ var RegEngMethods = {
     return this;
   },
 
-  /* TODO:
-  not: function () {
-
-  },
-  */
-
   anything: function () {
     this.current += ".";
     return this;
@@ -166,7 +160,6 @@ var RegEngMethods = {
     return this;
   },
 
-  /*TODO, figure out how to quantiy entire capture groups*/
   optional: function () {
     this.groups[this.groups.length-1].optional = true;
     return this;
@@ -264,22 +257,17 @@ var RegEngMethods = {
           .make();
       },
 
-      email: function () {
-
-      },
-      streetAdress: function () {
-
-      },
-      validURL: function () {
-
-      },
+      //potentially more to come:
+        //validEmail
+        //valideUrl
+        //valid StreetAddress
     };
   }
 };
 
 /*HELPERS*/
 
-//Do not invoke this directly
+//Do not invoke directly
 //Instead use .call(arguments, offset)
 var getFlags = function (offset) {
   var args = Array.prototype.slice.call(this, offset || 0);
@@ -295,4 +283,5 @@ var Group = function (text, optional, invert) {
   newGroup.text = text || "";
   newGroup.optional = optional || false;
   newGroup.invert = invert || false;
+  return newGroup;
 };
