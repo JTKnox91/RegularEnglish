@@ -46,7 +46,35 @@ describe("Selectors", function() {
     it("should not match not a number", function ()  {
       expect(RegEng().aNumber().make().test("a")).to.equal(false);
     });
-  })
+  });
+
+  describe("aVowel", function () {
+    it("should match a vowel, and only vowels", function () {
+      var testExp = RegEng().aVowel().make();
+      expect(testExp.test("E")).to.equal(true);
+      expect(testExp.test("F")).to.equal(false);
+    });
+    it("should match upper or lower case exclusively when provided a flag", function () {
+      var testUpper = RegEng().aVowel("U").make();
+      var testLower = RegEng().aVowel("L").make();
+      expect(testUpper.test("A")).to.equal(true);
+      expect(testUpper.test("a")).to.equal(false);
+      expect(testLower.test("A")).to.equal(false);
+      expect(testLower.test("a")).to.equal(true);
+    });
+    it("should match 'Y', only when the flag is provided", function () {
+      var testY = RegEng().aVowel("Y").make();
+      var testNoY = RegEng().aVowel().make();
+      expect(testNoY.test("Y")).to.equal(false);
+      expect(testY.test("y")).to.equal(true);
+    });
+    it("should be able to handle multiple flags", function () {
+      var testY = RegEng().aVowel("Y", "U").make();
+      var testNoY = RegEng().aVowel("Y", "U").make();
+      expect(testNoY.test("Y")).to.equal(true);
+      expect(testY.test("y")).to.equal(false);
+    });
+  });
 
 });
 
