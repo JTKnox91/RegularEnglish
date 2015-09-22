@@ -149,21 +149,62 @@ describe("Selectors", function() {
     });
   });
 
+  describe("anything", function () {
+    it("should always matches when there is something", function () {
+      var testExp = RegEng().anything().make();
+      expect(testExp.test(" ")).to.equal(true);
+      expect(testExp.test("a")).to.equal(true);
+      expect(testExp.test("X")).to.equal(true);
+      expect(testExp.test("1")).to.equal(true);
+      expect(testExp.test(":")).to.equal(true);
+      expect(testExp.test("\\")).to.equal(true);
+      expect(testExp.test("")).to.equal(false);
+      expect(testExp.test("\n")).to.equal(false);
+    });
+  });
+
 });
 
 describe("Quantifiers", function() {
   
-  describe("", function () {
+  describe("ofRange", function () {
     it("should ");
   });
+
+  describe("ofOneOrMore", function () {
+    it("should ");
+  });
+  describe("ofAnyAmount", function () {
+    it("should ");
+  });
+  describe("ofAtLeast", function () {
+    it("should ");
+  });
+  describe("ofExactly", function () {
+    it("should ");
+  });
+
 
 });
 
 describe("Groups", function() {
-  
-  describe("", function () {
+
+  describe("optional", function () {
     it("should ");
   });
+  
+  describe("then", function () {
+    it("should ");
+  });
+
+  describe("either", function () {
+    it("should ");
+  });
+
+  describe("anyIn", function () {
+    it("should ");
+  });
+
 
 });
 
