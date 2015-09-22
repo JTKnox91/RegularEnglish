@@ -83,13 +83,13 @@ Can select anything. RegExp equivalent of "."
 RegExp equivalent of {n,m}.
 
 ######.ofOneOrMore()
-RegExp equivalent of "+".
+RegExp equivalent of +
 
 ######.ofZeroOrMore()
-RegExp equivalent of "*".
+RegExp equivalent of *
 
 ######.optional()
-Previous selection is optional (zero of 1). RegExp equivalent of "?".
+Previous selection is optional (zero of 1). RegExp equivalent of ?
 
 ####Grouping
 
