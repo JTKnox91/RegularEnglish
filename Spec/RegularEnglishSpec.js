@@ -27,6 +27,18 @@ describe("Selectors", function() {
     });
   });
 
+  describe("aLetter", function () {
+    it("should match a letter", function () {
+      expect(RegEng().aLetter().make().test("a")).to.equal(true);
+    });
+    it("should not match match a lowercase letter if 'U' flag is present", function () {
+      expect(RegEng().aLetter("U").make().test("a")).to.equal(false);
+    });
+    it("should not match match an uppercase letter if 'L' flag is present", function () {
+      expect(RegEng().aLetter("L").make().test("A")).to.equal(false);
+    });
+  });
+
 });
 
 describe("Quantifiers", function() {
