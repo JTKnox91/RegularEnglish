@@ -41,17 +41,17 @@ validEmail.exec("adam1234@gmail.com")[1]; // "adam1234"
 
 ####Selectors
 
-######.theString(str, [flag,])
+######.theString(str, [,flag])
 Parses through the input str and inserts inserts escapes where needed.
 
 
-######.aLetter([flag,])
+######.aLetter([,flag])
 Select from any letter. RegExp equivalent of [a-zA-z]
 
 ######.aNumber()
 Select from any number. RegExp equivalent of \d
 
-######.aVowel([flag,])
+######.aVowel([,flag])
 Select from any vowel. RegExp equivalent of [aeiouAEIOU]
 
 Flags:
@@ -59,7 +59,7 @@ Flags:
 "L" - Lowercse only
 "Y" - **Include** 'Y'
 
-######.aConsonant([flag,])
+######.aConsonant([,flag])
 Select from any consonant.
 RegExp equivalent of [bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]
 
@@ -112,7 +112,7 @@ If used, this method should be the first thing chained to the RegEng() instance.
 Must match to the end of string. RegExp equivalent of "$".
 If used, this method should be the last thing chained before .make()
 
-######.contains([selector,] [args,] [quantity,] [args,] )
+######.contains([,selector] [,args] [,quantity] [,args] )
 Takes stringified selectors and quantities as its args. Will parse through arguments to figure out what is a sub argument. Ex:
 
 ```javascript
