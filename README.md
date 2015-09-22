@@ -96,10 +96,10 @@ If used, this method should be the last thing chained before .make()
 ######.contains([selector], [args], [quantity], [args] )
 Takes stringified selectors and quantities as its args. Will parse through arguments to figure out what is a sub argument. Ex:
 
-	````javascript
+	```javascript
 	.contains("aUpperCaseLetter", "ofAtLeast", 2)
 	// /(?=.*[A-Z]{2,}/
-	````
+	```
 
 
 ######.theRegExp(doNotEspace)
@@ -115,7 +115,7 @@ RegEng().premade().*premadeName()*.make()
 
 Produces a password validator. Options object defaults to the following:
     
-    ````javascript
+    ```javascript
     {
     	upper: 1 //At least one uppercase character
     	lower: 1 //At least one lowercase character
@@ -124,7 +124,7 @@ Produces a password validator. Options object defaults to the following:
     	min: 8 //minimum length of 8 characters
     	max: 32 //maximum length of 32 characters
 	}
-	````
+	```
 
 ######.email()
 
