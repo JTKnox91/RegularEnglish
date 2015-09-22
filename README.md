@@ -53,7 +53,7 @@ Select from any letter. RegExp equivalent of [a-zA-z]
 ######.aNumber()
 Select from any number. RegExp equivalent of \d
 
-######.aVowel([flag],)
+######.aVowel([flag,])
 Select from any vowel. RegExp equivalent of [aeiouAEIOU]
 
 Flags:
@@ -75,9 +75,6 @@ Select from any alphanumeri character. RegExp equivalent of \w
 
 ######.whitespace()
 Select from any whitespace character. RegExp equivalent of \s
-
-######.not()
-Chain before any of the above to select anything but that
 
 ######.anything()
 Can select anything. RegExp equivalent of ".".
@@ -117,7 +114,7 @@ If used, this method should be the first thing chained to the RegEng() instance.
 Must match to the end of string. RegExp equivalent of "$".
 If used, this method should be the last thing chained before .make()
 
-######.contains([selector], [args], [quantity], [args] )
+######.contains([selector,] [args,] [quantity,] [args,] )
 Takes stringified selectors and quantities as its args. Will parse through arguments to figure out what is a sub argument. Ex:
 
 ```javascript
@@ -125,7 +122,6 @@ Takes stringified selectors and quantities as its args. Will parse through argum
 //creates:
 /(?=.*[A-Z]{2,})/
 ```
-
 
 ######.theRegExp(doNotEspace)
 If this library is not comprehensive, you can insert your own regular expression. The input string will **not** be escaped.
@@ -150,10 +146,4 @@ Produces a password validator. Options object defaults to the following:
 	max: 32 //maximum length of 32 characters
 }
 ```
-
-######.email()
-
-######.streetAdress()
-
-######.validURL()
 
