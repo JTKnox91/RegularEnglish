@@ -63,16 +63,42 @@ describe("Selectors", function() {
       expect(testLower.test("a")).to.equal(true);
     });
     it("should match 'Y', only when the flag is provided", function () {
-      var testY = RegEng().aVowel("Y").make();
-      var testNoY = RegEng().aVowel().make();
-      expect(testNoY.test("Y")).to.equal(false);
-      expect(testY.test("y")).to.equal(true);
+      var withY = RegEng().aVowel("Y").make();
+      var withOutY = RegEng().aVowel().make();
+      expect(withY.test("y")).to.equal(true);
+      expect(withOutY.test("Y")).to.equal(false);
     });
     it("should be able to handle multiple flags", function () {
-      var testY = RegEng().aVowel("Y", "U").make();
-      var testNoY = RegEng().aVowel("Y", "U").make();
-      expect(testNoY.test("Y")).to.equal(true);
-      expect(testY.test("y")).to.equal(false);
+      var testExp = RegEng().aVowel("Y", "U").make();
+      expect(testExp.test("Y")).to.equal(true);
+      expect(testExp.test("y")).to.equal(false);
+    });
+  });
+
+  describe("isConsonant", function () {
+    it("should match a consonant, and only consonants", function () {
+      var testExp = RegEng().aConsonant().make();
+      expect(testExp.test("E")).to.equal(false);
+      expect(testExp.test("F")).to.equal(true);
+    });
+    it("should match upper or lower case exclusively when provided a flag", function () {
+      var testUpper = RegEng().aConsonant("U").make();
+      var testLower = RegEng().aConsonant("L").make();
+      expect(testUpper.test("B")).to.equal(true);
+      expect(testUpper.test("b")).to.equal(false);
+      expect(testLower.test("B")).to.equal(false);
+      expect(testLower.test("b")).to.equal(true);
+    });
+    it("should NOT match 'Y', when the flag is provided", function () {
+      var withY = RegEng().aConsonant("Y").make();
+      var withOutY = RegEng().aConsonant().make();
+      expect(withY.test("y")).to.equal(false);
+      expect(withOutY.test("Y")).to.equal(true);
+    });
+    it("should be able to handle multiple flags", function () {
+      var testExp = RegEng().aConsonant("L", "Y").make();
+      expect(testExp.test("c")).to.equal(true);
+      expect(testExp.test("B")).to.equal(false);
     });
   });
 
