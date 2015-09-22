@@ -2,8 +2,8 @@ window.RegEng = function(flags) {
   newInstance = Object.create(RegEngMethods);
   newInstance.current = "";
   newInstance.groups = [Group()];
-  newInstance.fromStart = false;
-  newInstance.toEnd = false;
+  newInstance.startAtFront = false;
+  newInstance.goToEnd = false;
   return newInstance;
 };
 
@@ -15,11 +15,11 @@ var RegEngMethods = {
     this.groups[this.groups.length -1].text = this.current;
 
     var regExpStr = 
-      (this.fromStart ? "^" : "") +
+      (this.startAtFront ? "^" : "") +
       this.groups.map(function (group) {
         return "(" + group.text + ")" + (group.optional ? "?" : "");
       }).join("") +
-      (this.toEnd ? "$" : "");
+      (this.goToEnd ? "$" : "");
 
     return new RegExp(regExpStr);
   },
@@ -201,12 +201,12 @@ var RegEngMethods = {
   },
 
   fromStart: function () {
-    this.fromStart = true;
+    this.startAtFront = true;
     return this;
   },
 
   toEnd: function () {
-    this.toEnd = true;
+    this.goToEnd = true;
     return this;
   },
 

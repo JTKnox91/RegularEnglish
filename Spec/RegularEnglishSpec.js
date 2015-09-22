@@ -168,7 +168,18 @@ describe("Selectors", function() {
 describe("Quantifiers", function() {
   
   describe("ofRange", function () {
-    it("should ");
+    it("should match only a quantity in the given range", function () {
+      var testExp = RegEng().fromStart().toEnd().anything().ofRange(3,4).make();
+      expect(testExp.test("AA")).to.equal(false);
+      expect(testExp.test("AAA")).to.equal(true);
+      expect(testExp.test("AAAA")).to.equal(true);
+      expect(testExp.test("AAAAA")).to.equal(false);
+    });
+    it("should be greedy", function () {
+      var testExp = RegEng().anything().ofRange(3,4).make();
+      expect(("AAAAA").match(testExp)[0]).to.equal("AAAA");
+    });
+
   });
 
   describe("ofOneOrMore", function () {
