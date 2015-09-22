@@ -16,3 +16,56 @@ describe("escape", function() {
     expect(RegEng().escape("\\^${}[]().*+?<>")).to.equal("\\\\\\^\\$\\{\\}\\[\\]\\(\\)\\.\\*\\+\\?\\<\\>");
   });
 });
+
+describe("Selectors", function() {
+  
+  describe("", function () {
+    it("should ");
+  });
+
+});
+
+describe("Quantifiers", function() {
+  
+  describe("", function () {
+    it("should ");
+  });
+
+});
+
+describe("Groups", function() {
+  
+  describe("", function () {
+    it("should ");
+  });
+
+});
+
+describe("fromStart", function () {
+  it("should ");
+});
+
+describe("toEnd", function () {
+  it("should ");
+});
+
+describe("theRegExp", function () {
+  it("should ");
+});
+
+describe("contains", function () {
+  it("should ");
+});
+
+describe("Premades", function () {
+
+  describe("password", function () {
+    it("should ");
+  });
+  
+});
+
+
+
+
+
