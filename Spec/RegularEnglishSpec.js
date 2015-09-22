@@ -125,6 +125,29 @@ describe("Selectors", function() {
       expect(testExp.test(":")).to.equal(false);
     });
   });
+  
+  describe("aLetterOrNumber", function () {
+    it("should match any alphanumeric, but not special chars", function () {
+      var testExp = RegEng().aLetterOrNumber().make();
+      expect(testExp.test("A")).to.equal(true);
+      expect(testExp.test("z")).to.equal(true);
+      expect(testExp.test("3")).to.equal(true);
+      expect(testExp.test(":")).to.equal(false);
+      expect(testExp.test("-")).to.equal(false);
+    });
+  });  
+
+  describe("whitespace", function () {
+    it("should match whitespace, and only whitespace", function () {
+      var testExp = RegEng().whiteSpace().make();
+      expect(testExp.test(" ")).to.equal(true);
+      expect(testExp.test("\n")).to.equal(true);
+      expect(testExp.test("\t")).to.equal(true);
+      expect(testExp.test("z")).to.equal(false);
+      expect(testExp.test("1")).to.equal(false);
+      expect(testExp.test(":")).to.equal(false);
+    });
+  });
 
 });
 
