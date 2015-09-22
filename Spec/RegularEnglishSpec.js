@@ -19,8 +19,12 @@ describe("escape", function() {
 
 describe("Selectors", function() {
   
-  describe("", function () {
-    it("should ");
+  describe("theString", function () {
+    it("should escape user strings and make a valid RegExp", function () {
+      var testExp = RegEng().theString("google.com").make();
+      expect(testExp.test("google.com")).to.be.ok;
+      expect(("www.google.com/?").match(testExp)[0]).to.equal("google.com");
+    });
   });
 
 });

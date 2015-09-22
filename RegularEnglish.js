@@ -15,11 +15,11 @@ var RegEngMethods = {
     this.groups[this.groups.length -1].text = this.current;
 
     var regExpStr = 
-      this.fromStart ? "^" : "" +
+      (this.fromStart ? "^" : "") +
       this.groups.map(function (group) {
-        return "(" + group.text + ")" + group.optional ? "?" : "";
-      }) +
-      this.toEnd ? "$" : "";
+        return "(" + group.text + ")" + (group.optional ? "?" : "");
+      }).join("") +
+      (this.toEnd ? "$" : "");
 
     return new RegExp(regExpStr);
   },
