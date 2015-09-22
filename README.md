@@ -75,7 +75,7 @@ Select from any alphanumeri character. RegExp equivalent of \w
 Select from any whitespace character. RegExp equivalent of \s
 
 ######.anything()
-Can select anything. RegExp equivalent of ".".
+Can select anything. RegExp equivalent of "."
 
 ####Quantities
 
