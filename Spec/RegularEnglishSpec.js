@@ -150,7 +150,7 @@ describe("Selectors", function() {
   });
 
   describe("anything", function () {
-    it("should always matches when there is something", function () {
+    it("should always match when there is something", function () {
       var testExp = RegEng().anything().make();
       expect(testExp.test(" ")).to.equal(true);
       expect(testExp.test("a")).to.equal(true);
