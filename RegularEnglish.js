@@ -1,7 +1,7 @@
 window.RegEng = function(flags) {
   newInstance = Object.create(RegEngMethods);
   newInstance.current = "";
-  newInstance.groups = [];
+  newInstance.groups = [Group()];
   newInstance.fromStart = false;
   newInstance.toEnd = false;
   return newInstance;
@@ -10,17 +10,17 @@ window.RegEng = function(flags) {
 var RegEngMethods = {
   make: function () {
     //TODO: include error handling for invalid expressions
-    var regExpStr = this.fromStart ? "^" : "";
-    if (this.groups.length) {
-      if (this.current.length) {
-        this.groups.push(this.current);
-      }
-      regExpStr += "(" + this.groups.join(")(") + ")";
-    }
-    else {
-      regExpStr += this.current;
-    }
-    regExpStr += this.toEnd ? "$" : "";
+
+    //finish last group object
+    this.groups[this.groups.length].text = this.current;
+
+    var regExpStr = 
+      this.fromStart ? "^" : "" +
+      this.groups.map(function (group) {
+        return "(" + group.text + ")" + group.optional ? "?" : "";
+      }) +
+      this.toEnd ? "$" : "";
+      
     return new RegExp(regExpStr);
   },
 
@@ -168,12 +168,14 @@ var RegEngMethods = {
 
   /*TODO, figure out how to quantiy entire capture groups*/
   optional: function () {
-
+    this.groups[this.groups.length-1].optional = true;
+    return this;
   },
 
   then: function () {
-    this.groups.push(this.current);
+    this.groups[this.groups.length-1].text = this.current;
     this.current = "";
+    this.groups.push(Group());
     return this;
   },
 
@@ -260,7 +262,6 @@ var RegEngMethods = {
           .contains("anyIn", "!@#$%^&*-?", "ofAtLeast", special)
           .anything().ofRange(min, max)
           .make();
-
       },
 
       email: function () {
@@ -287,4 +288,11 @@ var getFlags = function (offset) {
     flags[args[i]] = true;
   }
   return flags;
-};  
+};
+
+var Group = function (text, optional, invert) {
+  newGroup = {};
+  newGroup.text = text || "";
+  newGroup.optional = optional || false;
+  newGroup.invert = invert || false;
+};
