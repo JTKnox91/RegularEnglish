@@ -7,10 +7,74 @@ var specs = [
     return typeof this.actual === this.expect;
   },
 },
+{ assertion: "Should be able to make a RegularExpression",
+  actual: RegEng().aLetter().make(),
+  relation: "to be an instance of",
+  expect: RegExp,
+  test: function() {
+    return this.actual instanceof RegExp;
+  },
+},
 { assertion: "Should escape special characters",
   actual: RegEng().escape("\\^${}[]().*+?<>"),
   relation: "to equal",
   expect: "\\\\\\^\\$\\{\\}\\[\\]\\(\\)\\.\\*\\+\\?\\<\\>",
+  test: function() {
+    return this.actual === this.expect;
+  },
+},
+{ assertion: "Should ",
+  actual: ,
+  relation: ,
+  expect: ,
+  test: function() {
+    return this.actual === this.expect;
+  },
+},
+{ assertion: "Should ",
+  actual: ,
+  relation: ,
+  expect: ,
+  test: function() {
+    return this.actual === this.expect;
+  },
+},
+{ assertion: "Should ",
+  actual: ,
+  relation: ,
+  expect: ,
+  test: function() {
+    return this.actual === this.expect;
+  },
+},
+{ assertion: "Should ",
+  actual: ,
+  relation: ,
+  expect: ,
+  test: function() {
+    return this.actual === this.expect;
+  },
+},
+{ assertion: "Should ",
+  actual: ,
+  relation: ,
+  expect: ,
+  test: function() {
+    return this.actual === this.expect;
+  },
+},
+{ assertion: "Should ",
+  actual: ,
+  relation: ,
+  expect: ,
+  test: function() {
+    return this.actual === this.expect;
+  },
+},
+{ assertion: "Should ",
+  actual: ,
+  relation: ,
+  expect: ,
   test: function() {
     return this.actual === this.expect;
   },
