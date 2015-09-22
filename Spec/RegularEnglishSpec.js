@@ -183,7 +183,12 @@ describe("Quantifiers", function() {
   });
 
   describe("ofOneOrMore", function () {
-    it("should ");
+    it("should match when at least one is present", function () {
+      var testExp = RegEng().aLetter().ofOneOrMore().make();
+      expect(testExp.test("1")).to.equal(false);
+      expect(testExp.test("a1")).to.equal(true);
+      expect(testExp.test("AAAAAAA1")).to.equal(true);
+    });
   });
   describe("ofAnyAmount", function () {
     it("should ");
