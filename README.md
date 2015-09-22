@@ -4,12 +4,11 @@
 
 ##Usage
 
-######RegEng([flag,])
+######RegEng()
 
 Returns an instance of regluar english object.
 Keep chaining construction methods and finish with .make().
 You now have a JS Regular Expression object.
-(Note: flags will come into effect during the .make() invocation).
 
 ######.make()
 Returns an actual JS regular RegExp object.
@@ -41,7 +40,6 @@ validEmail.exec("adam1234@gmail.com")[1]; // "adam1234"
 
 
 ####Selectors
-*(Note: The default behavior for any generic selector involving a letter is to be case-insensitive. Adding the "U"/"L" flags (for "upper" or "lower") will change that behavior, but an "i" flag in the original RegEng instance will override that.)*
 
 ######.theString(str, [flag,])
 Parses through the input str and inserts inserts escapes where needed.
