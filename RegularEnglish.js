@@ -172,9 +172,6 @@ var RegEngMethods = {
   },
 
   then: function () {
-    if (this.containers.length) {
-      this.current = containers.join(")") + ")" + this.current;
-    }
     this.groups.push(this.current);
     this.current = "";
     return this;

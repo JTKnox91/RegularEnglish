@@ -19,18 +19,19 @@ Returns an actual JS regular RegExp object.
 ```javascript
 
 var validEmail =
-	RegEng()
-		.aLetterOrNumber().ofOneOrMore().then()
-		.theString("@").then()
-		.aLetterOrNumber().ofOneOrMore().then()
-		.theString(".").then()
-		.aLetter.ofRange(2,6).then()
-		.make()
+  RegEng()
+    .aLetterOrNumber().ofOneOrMore().then()
+    .theString("@").then()
+    .aLetterOrNumber().ofOneOrMore().then()
+    .theString(".").then()
+    .aLetter().ofRange(2,6).then()
+    .make();
 
-("My email is johnsmith@yahoo.com").match(validEmail)[0] // "johnsmith@yahoo.com"
-validEmail.test(noDomain@.net) //false
-validEmail.test(adam1234@gmail.com) //true
-validEmail.exec(adam1234@gmail.com)[1] // "adam1234"
+validEmail.toString(); // /(\w+)(@)(\w+)(\.)([A-Za-z]{2,6})/
+("My email is johnsmith@yahoo.com").match(validEmail)[0]; // "johnsmith@yahoo.com"
+validEmail.test("noDomain@.net"); //false
+validEmail.test("adam1234@gmail.com"); //true
+validEmail.exec("adam1234@gmail.com")[1]; // "adam1234"
 
 ```
 
