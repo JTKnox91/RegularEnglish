@@ -93,6 +93,13 @@ If used, this method should be the first thing chained to the RegEng() instance.
 Must match to the end of string. RegExp equivalent of "$".
 If used, this method should be the last thing chained before .make()
 
+######.contains([selector], [args], [quantity], [args] )
+Takes stringified selectors and quantities as its args. Will parse through arguments to figure out what is a sub argument. Ex:
+
+	.contains("aUpperCaseLetter", "ofAtLeast", 2)
+	// /(?=.*[A-Z]{2,}/
+
+
 ######.theRegExp(doNotEspace)
 If this library is not comprehensive, you can insert your own regular expression. The input string will **not** be escaped.
 
@@ -105,6 +112,7 @@ RegEng().premade().*premadeName()*.make()
 ######.password([options]);
 
 Produces a password validator. Options object defaults to the following:
+    
     {
     	upper: 1 //At least one uppercase character
     	lower: 1 //At least one lowercase character

@@ -222,19 +222,22 @@ var RegEngMethods = {
     var args = Array.prototype.slice.call(arguments);
     var container = "(?=.*";
     var i = 0;
-    
+
     while (i < args.length)
-      if (typeof args[i] === "function") {
+      if (this.hasOwnProperty(args[i])) {
         var f = i;
         var subArgs = [];
         i++;
-        while (typeof args[i] !== "function") {
+        while (!this.hasOwnProperty(args[i])) {
           subArgs.push(args[i]);
           i++;
         }
-        this.current.push(args[f].apply(RegEng(), subArgs).current);
+        this.current.push(this[args[f]].apply(RegEng(), subArgs).current);
       }
-      this.current += container;
+      else {
+        i++;
+      }
+      this.current += container + ")";
 
     return this;
   },
@@ -254,10 +257,10 @@ var RegEngMethods = {
         var min = options.min || 8;
         var max = options.max || 32;
         return RengEng()
-          .contains(aUpperCaseLetter, ofAtLeast, upper)
-          .contains(aLowerCaseLetter, ofAtLeast, lower)
-          .contains(aNumber, ofAtLeast, number)
-          .contains(anyIn, "!@#$%^&*-?", ofAtLeast, special)
+          .contains("aUpperCaseLetter", "ofAtLeast", upper)
+          .contains("aLowerCaseLetter", "ofAtLeast", lower)
+          .contains("aNumber", "ofAtLeast", number)
+          .contains("anyIn", "!@#$%^&*-?", "ofAtLeast", special)
           .anything().ofRange(min, max)
           .make();
 
