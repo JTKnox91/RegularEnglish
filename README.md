@@ -1,35 +1,58 @@
 #Regular English
 
-####Make the regular expression you need, using the english you already know.
+####Make the regular expression you need, using the words you already know.
 
 ##Usage
 
-####RegEng([flag])
+######RegEng([flag,])
 
 Returns an instance of regluar english object.
 Keep chaining construction methods and finish with .make().
-You now have a JS Regular Expression object
+You now have a JS Regular Expression object.
 (Note: flags will come into effect during the .make() invocation).
 
 ######.make()
 Returns an actual JS regular RegExp object.
 
+####Example
+
+```javascript
+
+var validEmail =
+	RegEng()
+		.aLetterOrNumber().ofOneOrMore().then()
+		.theString("@").then()
+		.aLetterOrNumber().ofOneOrMore().then()
+		.theString(".").then()
+		.aLetter.ofRange(2,6).then()
+		.make()
+
+("My email is johnsmith@yahoo.com").match(validEmail)[0] // "johnsmith@yahoo.com"
+validEmail.test(noDomain@.net) //false
+validEmail.test(adam1234@gmail.com) //true
+validEmail.exec(adam1234@gmail.com)[1] // "adam1234"
+
+```
+
+*Note: The usage of the .then() method to create capture groups is optional*
+
 ##Construction
 
-######.theString(str)
 
+####Selectors
+*(Note: The default behavior for any generic selector involving a letter is to be case-insensitive. Adding the "U"/"L" flags (for "upper" or "lower") will change that behavior, but an "i" flag in the original RegEng instance will override that.)*
+
+######.theString(str, [flag,])
 Parses through the input str and inserts inserts escapes where needed.
 
-####Generic Selectors
-(Note: The default behavior for any generic selector involving a letter is to be case-insensitive. Adding the "U"/"L" flags (for "upper" or "lower") will change that behavior, but an "i" flag in the original RegEng instance will override that.)
 
-######.aLetter([flag])
+######.aLetter([flag,])
 Select from any letter. RegExp equivalent of [a-zA-z]
 
 ######.aNumber()
 Select from any number. RegExp equivalent of \d
 
-######.aVowel([flag])
+######.aVowel([flag],)
 Select from any vowel. RegExp equivalent of [aeiouAEIOU]
 
 Flags:
@@ -37,7 +60,7 @@ Flags:
 "L" - Lowercse only
 "Y" - **Include** 'Y'
 
-######.aConsonant([flag])
+######.aConsonant([flag,])
 Select from any consonant.
 RegExp equivalent of [bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]
 
