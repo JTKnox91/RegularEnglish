@@ -102,6 +102,30 @@ describe("Selectors", function() {
     });
   });
 
+  describe("aUpperCaseLetter", function () {
+    it("should only match upper case letters", function () {
+      var testExp = RegEng().aUpperCaseLetter().make();
+      expect(testExp.test("A")).to.equal(true);
+      expect(testExp.test("Z")).to.equal(true);
+      expect(testExp.test("a")).to.equal(false);
+      expect(testExp.test("z")).to.equal(false);
+      expect(testExp.test("1")).to.equal(false);
+      expect(testExp.test(":")).to.equal(false);
+    });
+  });
+
+  describe("aLowerCaseLetter", function () {
+    it("should only match upper case letters", function () {
+      var testExp = RegEng().aLowerCaseLetter().make();
+      expect(testExp.test("A")).to.equal(false);
+      expect(testExp.test("Z")).to.equal(false);
+      expect(testExp.test("a")).to.equal(true);
+      expect(testExp.test("z")).to.equal(true);
+      expect(testExp.test("1")).to.equal(false);
+      expect(testExp.test(":")).to.equal(false);
+    });
+  });
+
 });
 
 describe("Quantifiers", function() {
