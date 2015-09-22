@@ -179,15 +179,17 @@ describe("Quantifiers", function() {
       var testExp = RegEng().anything().ofRange(3,4).make();
       expect(("AAAAA").match(testExp)[0]).to.equal("AAAA");
     });
-
   });
 
   describe("ofOneOrMore", function () {
+    var testExp = RegEng().aLetter().ofOneOrMore().make();
     it("should match when at least one is present", function () {
-      var testExp = RegEng().aLetter().ofOneOrMore().make();
       expect(testExp.test("1")).to.equal(false);
       expect(testExp.test("a1")).to.equal(true);
       expect(testExp.test("AAAAAAA1")).to.equal(true);
+    });
+    it("should be greedy", function () {
+      expect(("AAA").match(testExp)[0]).to.equal("AAA");
     });
   });
   describe("ofAnyAmount", function () {
