@@ -98,7 +98,8 @@ Takes stringified selectors and quantities as its args. Will parse through argum
 
 ```javascript
 .contains("aUpperCaseLetter", "ofAtLeast", 2)
-// /(?=.*[A-Z]{2,}/
+//creates:
+/(?=.*[A-Z]{2,})/
 ```
 
 
