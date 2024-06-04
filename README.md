@@ -1,19 +1,19 @@
 #Regular English
 
-####Make the regular expression you need, using the words you already know.
+#### Make the regular expression you need, using the words you already know.
 
-##Usage
+## Usage
 
-######RegEng()
+###### RegEng()
 
 Returns an instance of regluar english object.
 Keep chaining construction methods and finish with .make().
 You now have a JS Regular Expression object.
 
-######.make()
+###### .make()
 Returns an actual JS regular RegExp object.
 
-####Example
+#### Example
 
 ```javascript
 
@@ -36,22 +36,22 @@ validEmail.exec("adam1234@gmail.com")[1]; // "adam1234"
 
 *Note: The usage of the .then() method to create capture groups is optional*
 
-##Construction
+## Construction
 
 
-####Selectors
+#### Selectors
 
-######.theString(str, [,flag])
+###### .theString(str, [,flag])
 Parses through the input str and inserts inserts escapes where needed.
 
 
-######.aLetter([,flag])
+###### .aLetter([,flag])
 Select from any letter. RegExp equivalent of [a-zA-z]
 
-######.aNumber()
+###### .aNumber()
 Select from any number. RegExp equivalent of \d
 
-######.aVowel([,flag])
+###### .aVowel([,flag])
 Select from any vowel. RegExp equivalent of [aeiouAEIOU]
 
 Flags:
@@ -59,7 +59,7 @@ Flags:
 "L" - Lowercse only
 "Y" - **Include** 'Y'
 
-######.aConsonant([,flag])
+###### .aConsonant([,flag])
 Select from any consonant.
 RegExp equivalent of [bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]
 
@@ -68,51 +68,51 @@ Flags:
 "L" - Lowercse only
 "Y" - **Exclude** 'Y'
 
-######.aLetterOrNumber()
+###### .aLetterOrNumber()
 Select from any alphanumeri character. RegExp equivalent of \w
 
-######.whitespace()
+###### .whitespace()
 Select from any whitespace character. RegExp equivalent of \s
 
-######.anything()
+###### .anything()
 Can select anything. RegExp equivalent of "."
 
-####Quantities
+#### Quantities
 
-######.ofRange(n,m)
+###### .ofRange(n,m)
 RegExp equivalent of {n,m}.
 
-######.ofOneOrMore()
+###### .ofOneOrMore()
 RegExp equivalent of +
 
-######.ofZeroOrMore()
+###### .ofZeroOrMore()
 RegExp equivalent of *
 
-######.optional()
+###### .optional()
 Previous selection is optional (zero of 1). RegExp equivalent of ?
 
-####Grouping
+#### Grouping
 
-######.then()
+###### .then()
 Wraps everything before (or to the previous .then()) in a capture group.
 
-######.either(arrayOfStrings)
+###### .either(arrayOfStrings)
 Match any of the strings from the input array. RegExp equivalent of (str1|str2|st3) etc. Each string is parsed for special characters and properly espaced before as well.
 
-######.anyIn(string)
+###### .anyIn(string)
 Match any of the characters in the string. RegExp of [abc]. Special characters will be escaped as needed.
 
-####Misc
+#### Misc
 
-######.fromStart()
+###### .fromStart()
 Must match from start of string. RegExp equivalent of "^".
 If used, this method should be the first thing chained to the RegEng() instance.
 
-######.toEnd()
+###### .toEnd()
 Must match to the end of string. RegExp equivalent of "$".
 If used, this method should be the last thing chained before .make()
 
-######.contains([,selector] [,args] [,quantity] [,args] )
+###### .contains([,selector] [,args] [,quantity] [,args] )
 Takes stringified selectors and quantities as its args. Will parse through arguments to figure out what is a sub argument. Ex:
 
 ```javascript
@@ -121,16 +121,16 @@ Takes stringified selectors and quantities as its args. Will parse through argum
 /(?=.*[A-Z]{2,})/
 ```
 
-######.theRegExp(doNotEspace)
+###### .theRegExp(doNotEspace)
 If this library is not comprehensive, you can insert your own regular expression. The input string will **not** be escaped.
 
-####Premade Constructs
+#### Premade Constructs
 
-#####Usage:
+##### Usage:
 
-RegEng().premade().*premadeName()*.make()
+`RegEng().premade().*premadeName()*.make()`
 
-######.password([options]);
+###### .password([options]);
 
 Produces a password validator. Options object defaults to the following:
     
